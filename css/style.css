@@ -1,0 +1,14 @@
+body {
+	font-family: Arial;
+	max-width: 1200px;
+	margin: auto;
+	padding: 20px;
+}
+
+h1 {
+	color: #0078d4;
+}
+
+h2 {
+	margin-top: 40px;
+}
