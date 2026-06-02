@@ -1,14 +1,370 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+:root {
+	--bg: #eef2f7;
+	--surface: rgba(255, 255, 255, 0.96);
+	--surface-strong: #ffffff;
+	--text: #0f172a;
+	--muted: #526074;
+	--border: rgba(15, 23, 42, 0.08);
+	--brand: #1d4ed8;
+	--brand-dark: #163fa3;
+	--accent: #0f766e;
+	--shadow: 0 18px 42px rgba(15, 23, 42, 0.08);
+	--radius-xl: 24px;
+	--radius-lg: 18px;
+	--radius-md: 12px;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
 body {
-	font-family: Arial;
-	max-width: 1200px;
-	margin: auto;
-	padding: 20px;
+	margin: 0;
+	font-family: "Inter", sans-serif;
+	color: var(--text);
+	background: linear-gradient(180deg, #f8fafc 0%, var(--bg) 100%);
+	min-height: 100vh;
+	line-height: 1.7;
+	padding: 28px 20px 44px;
+}
+
+body::before {
+	content: "";
+	position: fixed;
+	inset: 0;
+	background-image: linear-gradient(rgba(15, 23, 42, 0.025) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(15, 23, 42, 0.025) 1px, transparent 1px);
+	background-size: 40px 40px;
+	pointer-events: none;
+	opacity: 0.5;
+	z-index: -1;
+}
+
+a {
+	color: var(--brand);
+	text-decoration: none;
+	transition: color 160ms ease, transform 160ms ease, background-color 160ms ease,
+		box-shadow 160ms ease;
+}
+
+a:hover {
+	color: var(--brand-dark);
+}
+
+.site-shell {
+	max-width: 1120px;
+	margin: 0 auto;
+	padding: 0;
+}
+
+header {
+	position: sticky;
+	top: 16px;
+	z-index: 20;
+	margin-bottom: 22px;
+}
+
+nav {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 8px;
+	padding: 12px 14px;
+	background: rgba(255, 255, 255, 0.92);
+	backdrop-filter: blur(14px);
+	border: 1px solid var(--border);
+	border-radius: 18px;
+	box-shadow: var(--shadow);
+}
+
+nav a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px 14px;
+	border-radius: 12px;
+	font-weight: 600;
+	font-size: 0.96rem;
+	color: var(--muted);
+	background: transparent;
+}
+
+nav a:hover,
+nav a[aria-current="page"] {
+	background: rgba(29, 78, 216, 0.08);
+	color: var(--brand-dark);
+}
+
+main {
+	display: grid;
+	gap: 24px;
+}
+
+.hero,
+.content-card {
+	background: var(--surface);
+	backdrop-filter: blur(18px);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-xl);
+	box-shadow: var(--shadow);
+	padding: clamp(26px, 4vw, 40px);
+}
+
+.hero {
+	display: grid;
+	grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.95fr);
+	gap: 24px;
+	align-items: center;
+}
+
+.eyebrow {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 7px 12px;
+	border-radius: 999px;
+	background: rgba(15, 118, 110, 0.1);
+	color: var(--accent);
+	font-weight: 700;
+	font-size: 0.78rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	margin-bottom: 16px;
+}
+
+h1,
+h2,
+h3 {
+	font-family: "Inter", sans-serif;
+	line-height: 1.12;
+	margin: 0;
+	color: var(--text);
 }
 
 h1 {
-	color: #0078d4;
+	font-size: clamp(2.5rem, 6vw, 4.4rem);
+	letter-spacing: -0.06em;
+	margin-bottom: 14px;
 }
 
 h2 {
-	margin-top: 40px;
+	font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+	letter-spacing: -0.04em;
+	margin-bottom: 14px;
+}
+
+h3 {
+	font-size: clamp(1.1rem, 2vw, 1.35rem);
+	color: var(--text);
+	font-weight: 600;
+	margin-bottom: 12px;
+}
+
+p {
+	margin: 0 0 16px;
+	color: var(--muted);
+	font-size: 1rem;
+}
+
+.lead {
+	font-size: 1.08rem;
+	max-width: 60ch;
+}
+
+.hero-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 22px;
+}
+
+.button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 12px 16px;
+	border-radius: 12px;
+	font-weight: 700;
+	border: 1px solid transparent;
+	box-shadow: none;
+}
+
+.button.primary {
+	background: linear-gradient(135deg, var(--brand), #3b82f6);
+	color: white;
+	box-shadow: 0 12px 24px rgba(29, 78, 216, 0.18);
+}
+
+.button.primary:hover {
+	transform: translateY(-1px);
+	color: white;
+}
+
+.button.secondary {
+	background: rgba(15, 23, 42, 0.03);
+	color: var(--brand-dark);
+	border-color: rgba(15, 23, 42, 0.08);
+}
+
+.button.secondary:hover {
+	background: rgba(15, 23, 42, 0.06);
+}
+
+.hero-panel {
+	display: grid;
+	gap: 14px;
+	padding: 24px;
+	border-radius: var(--radius-lg);
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.98));
+	border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.stat-grid,
+.card-grid,
+.contact-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 18px;
+}
+
+.stat,
+.card,
+.contact-card {
+	background: var(--surface-strong);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-lg);
+	padding: 22px;
+	box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+}
+
+.stat strong {
+	display: block;
+	font-family: "Inter", sans-serif;
+	font-size: 1.7rem;
+	margin-bottom: 6px;
+	color: var(--brand-dark);
+}
+
+.section-label {
+	font-size: 0.78rem;
+	font-weight: 800;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--accent);
+	margin-bottom: 12px;
+}
+
+.card-grid,
+.contact-grid {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.card h3,
+.contact-card h3 {
+	margin-bottom: 10px;
+	font-size: 1.15rem;
+	color: var(--text);
+}
+
+.card p,
+.contact-card p {
+	margin-bottom: 0;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+li {
+	padding: 10px 12px;
+	border-radius: 12px;
+	background: rgba(29, 78, 216, 0.06);
+	color: var(--text);
+	border: 1px solid rgba(29, 78, 216, 0.1);
+	font-weight: 600;
+}
+
+.stacked-list {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 14px;
+}
+
+.stacked-list li {
+	justify-content: flex-start;
+	border-radius: 16px;
+	padding: 16px 18px;
+	background: #ffffff;
+	box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.05);
+}
+
+.contact-link {
+	display: inline-flex;
+	margin-top: 8px;
+	font-weight: 700;
+}
+
+@media (min-width: 1024px) {
+	.hero {
+		min-height: 420px;
+	}
+
+	.content-card {
+		padding: 38px 40px;
+	}
+}
+
+@media (max-width: 920px) {
+	.hero,
+	.stat-grid,
+	.card-grid,
+	.contact-grid,
+	.stacked-list {
+		grid-template-columns: 1fr;
+	}
+
+	body {
+		padding-top: 18px;
+	}
+
+	header {
+		top: 12px;
+	}
+}
+
+@media (max-width: 640px) {
+	body {
+		padding-left: 14px;
+		padding-right: 14px;
+	}
+
+	nav {
+		padding: 12px;
+		border-radius: 16px;
+	}
+
+	nav a {
+		width: calc(50% - 6px);
+	}
+
+	.hero,
+	.hero-panel,
+	.content-card,
+	.stat,
+	.card,
+	.contact-card {
+		padding: 20px;
+	}
 }
