@@ -1275,3 +1275,23 @@ main {
     color: inherit;
   }
 }
+
+.provider-icon {
+  display: block;
+  width: 25px;
+  height: 25px;
+}
+
+.provider-mark--aws .provider-icon {
+  width: 29px;
+  height: 29px;
+}
+
+.provider-mark--microsoft {
+  background: #fff;
+}
+
+.provider-mark--kubernetes .provider-icon {
+  width: 27px;
+  height: 27px;
+}
